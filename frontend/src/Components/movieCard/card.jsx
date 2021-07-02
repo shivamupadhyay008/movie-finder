@@ -6,7 +6,7 @@ export const MovieCard = ({
   releasedate,
   duration,
   cast,
-  geners,
+  genres,
 }) => {
   return (
     <section className="card-sec">
@@ -17,7 +17,7 @@ export const MovieCard = ({
           <p>IMDB ratings : {imdbratings}</p>
           <div>
             <p>Cast : {cast.join()} </p>
-            <p>Geners : {geners.join()}</p>
+            <p>Genres : {genres.join()}</p>
           </div>
           <p>Duration :{duration}</p>
           <p className="release-p">
