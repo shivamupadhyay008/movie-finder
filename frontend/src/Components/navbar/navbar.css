@@ -4,6 +4,7 @@
   position: fixed;
   width: 100%;
   padding: 1rem;
+  z-index: 3;
 }
 .fx {
   display: flex;
@@ -24,4 +25,19 @@
   width: 48px;
   height: 48px;
   cursor: pointer;
+}
+.ct-div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-btn{
+font-size: large;
+margin-right:1rem ;
+cursor: pointer;
+padding: 0.5rem;
+border-radius: 0.5rem;
+}
+.nav-btn:hover{
+  background-color: #7e6989;
 }

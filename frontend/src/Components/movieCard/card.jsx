@@ -2,14 +2,7 @@ import "./card.css";
 export const MovieCard = ({
   item,
   setData,
-  setshow,
-  posterimg,
-  title,
-  imdbratings,
-  releasedate,
-  duration,
-  cast,
-  genres,
+  setshow
 }) => {
   return (
     <section

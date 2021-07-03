@@ -1,40 +1,40 @@
 import "./styles.css";
-import { Navbar, MovieCard, Moviepage } from "./Components";
+import { Navbar, AllMovies, Moviepage, MoviesByCategory } from "./Components";
 import { moviesdata } from "./data";
-import {useState} from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { Routes, Route } from "react-router-dom";
 export default function App() {
   const [show, setshow] = useState(false);
-  const [data,setData]=useState({name:"shivam"})
+  const [data, setData] = useState({ name: "shivam" });
   return (
     <>
       <Navbar />
       <div className="App">
-        <div className="movies-cards-div">
-          {moviesdata.map((item) => {
-            return (
-              <MovieCard
-                item={item}
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <AllMovies
+                moviesdata={moviesdata}
                 setData={setData}
-                movie={item.id}
                 setshow={setshow}
-                key={item.id}
-                posterimg={item.posterurl}
-                title={item.title}
-                imdbratings={item.imdbRating}
-                releasedate={item.releaseDate}
-                duration={item.duration}
-                cast={item.actors}
-                genres={item.genres}
               />
-            );
-          })}
-        </div>
+            }
+          />
+          <Route
+            path="/category"
+            element={
+              <MoviesByCategory
+                moviesdata={moviesdata}
+                setData={setData}
+                setshow={setshow}
+              />
+            }
+          />
+        </Routes>
       </div>
-      <Moviepage
-        show={show}
-        movieData={data}
-        setshow={setshow}
-      />
+      <Moviepage show={show} movieData={data} setshow={setshow} />
     </>
   );
 }
