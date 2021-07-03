@@ -2,7 +2,7 @@
   cursor: pointer;
   background: #c8b8db;
   box-shadow: 20px 20px 60px #aa9cba, -20px -20px 60px #e6d4fc;
-  width: 35%;
+  width: 38%;
   height: 42vh;
   padding: 1rem;
   border-radius: 1rem;
@@ -14,14 +14,12 @@
 .card-img {
   border-radius: 0.4rem;
   width: 40%;
-  height: 34vh;
+  height: 38vh;
   margin-right: 0.3rem;
 }
 .card-title {
   margin: 0;
-
   font-weight: bold;
-
   font-size: 25px;
 }
 .desc-div {

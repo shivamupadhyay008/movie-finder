@@ -1,8 +1,7 @@
 import "./moviepage.css";
-import { Modal, Card ,Button} from "react-bootstrap";
-import { useState } from "react";
-export const Moviepage = ({ posterurl ,title,genres,cast,duration,realisedate,storyline,rating}) => {
- const [show,setshow]=useState(true)
+import { Modal, Card, Button } from "react-bootstrap";
+export const Moviepage = ({ movieData, show, setshow }) => {
+  console.log(movieData);
   return (
     <section>
       <Modal
@@ -14,19 +13,24 @@ export const Moviepage = ({ posterurl ,title,genres,cast,duration,realisedate,st
         closeButton
       >
         <Card className="bs-card">
-          <Card.Img className="card-img-bs" variant="top" src={posterurl} />
+          <Card.Img
+            className="card-img-bs"
+            variant="top"
+            src={movieData.posterurl}
+          />
           <Card.Body>
-            <h2 style={{ fontWeight: "bolder" }}>Movie: {title}</h2>
-            <h4>Genres : {genres.join()} </h4>
-            <h4>Cast : {cast.join()}</h4>
+            <h2 style={{ fontWeight: "bolder" }}>Movie: {movieData.title}</h2>
+            <h4>Genres : {movieData.genres} </h4>
+            <h4>Cast : {movieData.actors}</h4>
             <p>
-              Realise date : {realisedate} <br />
-              Movie Duration : {duration} <br /> IMBD Ratings : {rating}
+              Realise date : {movieData.releaseDate} <br />
+              Movie Duration : {movieData.duration} <br /> IMBD Ratings :{" "}
+              {movieData.imdbRating}
             </p>
-            <p>Storyline : {storyline}</p>
+            <p>Storyline : {movieData.storyline}</p>
           </Card.Body>
         </Card>
-        <Button onClick={()=>setshow(false)} >Back</Button>
+        <Button onClick={() => setshow(false)}>Back</Button>
       </Modal>
       );
     </section>

@@ -1,5 +1,8 @@
 import "./card.css";
 export const MovieCard = ({
+  item,
+  setData,
+  setshow,
   posterimg,
   title,
   imdbratings,
@@ -9,20 +12,24 @@ export const MovieCard = ({
   genres,
 }) => {
   return (
-    <section className="card-sec">
+    <section
+      className="card-sec"
+      onClick={() => {
+        setshow(true);
+        setData(item);
+      }}
+    >
       <div className="card-div">
-        <img className="card-img" src={posterimg} alt="" />
+        <img className="card-img" src={item.posterurl} alt="" />
         <div className="desc-div">
-          <h1 className="card-title">{title}</h1>
-          <p>IMDB ratings : {imdbratings}</p>
+          <h1 className="card-title">{item.title}</h1>
+          <p>IMDB ratings : {item.imdbRating}</p>
           <div>
-            <p>Cast : {cast.join()} </p>
-            <p>Genres : {genres.join()}</p>
+            <p>Cast : {item.actors.join()} </p>
+            <p>Genres : {item.genres.join()}</p>
           </div>
-          <p>Duration :{duration}</p>
-          <p className="release-p">
-            Realise Date{releasedate}
-          </p>
+          <p>Duration :{item.duration}</p>
+          <p className="release-p">Realise Date : {item.releaseDate}</p>
         </div>
       </div>
     </section>
