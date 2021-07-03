@@ -1,8 +1,12 @@
 import "./styles.css";
-import { Navbar, AllMovies, Moviepage, MoviesByCategory } from "./Components";
-import { moviesdata } from "./data";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import {
+  Navbar,
+  Home,
+  AllMovies,
+  Moviepage,
+  MoviesByCategory,
+} from "./Components";
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 export default function App() {
   const [show, setshow] = useState(false);
@@ -12,21 +16,15 @@ export default function App() {
       <Navbar />
       <div className="App">
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route
-            path="/"
-            element={
-              <AllMovies
-                moviesdata={moviesdata}
-                setData={setData}
-                setshow={setshow}
-              />
-            }
+            path="/allmovies"
+            element={<AllMovies setData={setData} setshow={setshow} />}
           />
           <Route
             path="/category"
             element={
               <MoviesByCategory
-                moviesdata={moviesdata}
                 setData={setData}
                 setshow={setshow}
               />
@@ -36,5 +34,5 @@ export default function App() {
       </div>
       <Moviepage show={show} movieData={data} setshow={setshow} />
     </>
-  );
+  )
 }

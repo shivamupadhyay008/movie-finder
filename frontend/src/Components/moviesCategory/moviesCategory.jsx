@@ -1,17 +1,30 @@
 import "./category.css";
-import { MovieCard } from "../index";
+import { MovieCard, Loader } from "../index";
 import { Dropdown } from "react-bootstrap";
-import { useState } from "react";
-export const MoviesByCategory = ({ moviesdata, setData, setshow }) => {
+import { useState, useEffect } from "react";
+import axios from "axios";
+export const MoviesByCategory = ({  setData, setshow }) => {
   const [category, setCategory] = useState("Action");
+  const [movies, setmovies] = useState(null);
+  const [showLoader, setLoader] = useState(true);
   console.log(category);
-  const filterMovies = moviesdata.filter((item) => {
-    let answer = item.genres.some(
-      (genreItem) => genreItem.toLowerCase() === category.toLowerCase()
-    );
-    if(answer) return item
-  });
-  console.log(filterMovies)
+  const getMovies = async (category) => {
+    try {
+      setLoader(true);
+      const response = await axios.get(`/moviescategory/${category}`);
+      setmovies(response.data.movies);
+      console.log(response.data);
+      setLoader(false);
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      getMovies(category);
+    }, 3000);
+  }, [category]);
   return (
     <section>
       <div className="drop-dwn">
@@ -39,18 +52,22 @@ export const MoviesByCategory = ({ moviesdata, setData, setshow }) => {
           </Dropdown.Menu>
         </Dropdown>
       </div>
-      <div className="movies-cards-div">
-        {filterMovies.map((item) => {
-          return (
-            <MovieCard
-              item={item}
-              setData={setData}
-              setshow={setshow}
-              key={item.id}
-            />
-          );
-        })}
-      </div>
+      {!showLoader && movies ? (
+        <div className="movies-cards-div">
+          {movies.map((item) => {
+            return (
+              <MovieCard
+                item={item}
+                setData={setData}
+                setshow={setshow}
+                key={item.id}
+              />
+            );
+          })}
+        </div>
+      ) : (
+        <Loader />
+      )}
     </section>
   );
 };

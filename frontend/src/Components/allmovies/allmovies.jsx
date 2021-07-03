@@ -1,8 +1,30 @@
-import {MovieCard} from "../index"
-export const AllMovies = ({moviesdata,setData,setshow}) => {
-  return (
-    <div className="movies-cards-div">
-      {moviesdata.map((item) => {
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { MovieCard ,Loader} from "../index";
+export const AllMovies = ({  setData, setshow }) => {
+  const [movies, setmovies] = useState(null);
+  const [size,setSize]=useState(10);
+  const getMovies = async(size)=>{
+  try {
+    const response = await axios.get(`/getmoviesinfo/${size}`);
+    setmovies(response.data.movies)
+    setSize((size)=>size+5)
+    console.log(response.data);
+  } catch (err) {
+    console.log(err.message);
+  }
+  };
+  useEffect(() => {
+   setTimeout(() => {
+    getMovies(10);
+   }, 3000);
+
+  }, []);
+
+  return movies ? (
+    <div className="movies-cards-div" onScroll={()=>{getMovies(size)
+    console.log("hhh")}}>
+      {movies.map((item) => {
         return (
           <MovieCard
             item={item}
@@ -13,5 +35,7 @@ export const AllMovies = ({moviesdata,setData,setshow}) => {
         );
       })}
     </div>
+  ) : (
+    <Loader />
   );
 };
