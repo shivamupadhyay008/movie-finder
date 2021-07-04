@@ -74,7 +74,7 @@ export const UpdateMovie = ({ data, setShow, setEdit }) => {
       const response = await axios.post("/updatemovie", {
         data: updateData,
       });
-      let moviedata = movies.filter((item) => item.id != data.id);
+      let moviedata = movies.filter((item) => item.id !== data.id);
       moviedata.push(response.data.movie);
       setMovies(moviedata);
       setEdit(false);

@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { MovieCard ,Loader} from "../index";
 import {useMoviesContext} from "../../context/movieContext";
-export const AllMovies = ({  setData, setshow }) => {
+const AllMovies = ({  setData, setshow }) => {
   const [size,setSize]=useState(10);
   const {movies,setMovies} =useMoviesContext()
   const getMovies = async(size)=>{
@@ -19,7 +19,7 @@ export const AllMovies = ({  setData, setshow }) => {
    setTimeout(() => {
     getMovies(10);
    }, 3000);
-  }, []);
+  },[]);
 
   return movies ? (
     <div className="movies-cards-div" onScroll={()=>{getMovies(size)
@@ -40,3 +40,4 @@ export const AllMovies = ({  setData, setshow }) => {
     <Loader />
   );
 };
+export default AllMovies;

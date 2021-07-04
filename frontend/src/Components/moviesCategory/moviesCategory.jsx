@@ -4,7 +4,7 @@ import { Dropdown } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import {useMoviesContext} from "../../context/movieContext"
 import axios from "axios";
-export const MoviesByCategory = ({  setData, setshow }) => {
+const MoviesByCategory = ({  setData, setshow }) => {
   const [category, setCategory] = useState("Action");
   const {movies, setMovies} = useMoviesContext();
   const [showLoader, setLoader] = useState(true);
@@ -69,3 +69,4 @@ export const MoviesByCategory = ({  setData, setshow }) => {
     </section>
   );
 };
+export default MoviesByCategory;
