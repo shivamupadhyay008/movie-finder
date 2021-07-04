@@ -1,10 +1,11 @@
 const express = require("express");
 const app = express();
 const PORT = 4000;
-const moviedata = require("./data");
+let moviedata = require("./data");
 const cors = require("cors");
 const bodyParser =require("body-parser")
 app.use(cors());
+app.use(bodyParser.json())
 app.get("/", (req, res) => {
   res.json({ success: true, message: "Hello from movie finder endpoint!" });
 });
@@ -23,6 +24,18 @@ app.route("/moviescategory/:category").get((req, res) => {
   });
   res.json({ success: true, movies });
 });
+
+
+
+
+app.route("/updatemovie").post((req, res) => {
+  const {data}  = req.body;
+  moviedata = moviedata.filter((item) => item.id != data.id);
+  moviedata.push(data);
+  res.json({ success: true, movie:data });
+});
+
+
 app.listen(PORT, () => {
   console.log(`Movie finder server started at http://localhost:${PORT}`);
 });

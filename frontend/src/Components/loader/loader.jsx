@@ -1,9 +1,9 @@
 import {Spinner} from "react-bootstrap";
-export const Loader =()=>{
+export const Loader =({text})=>{
     return (
       <div style={{width:"100%",textAlign:"center"}}>
         <h2>
-          Loading <Spinner animation="grow" />
+          {text?text:"Loading"}... <Spinner animation="grow" />
         </h2>
       </div>
     );

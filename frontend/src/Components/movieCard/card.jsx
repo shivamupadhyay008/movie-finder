@@ -1,8 +1,8 @@
-import "./card.css";
+import "./card.scss";
 export const MovieCard = ({
   item,
   setData,
-  setshow
+  setshow,
 }) => {
   return (
     <section

@@ -1,25 +1,23 @@
-import "./category.css";
+import "./category.scss";
 import { MovieCard, Loader } from "../index";
 import { Dropdown } from "react-bootstrap";
 import { useState, useEffect } from "react";
+import {useMoviesContext} from "../../context/movieContext"
 import axios from "axios";
 export const MoviesByCategory = ({  setData, setshow }) => {
   const [category, setCategory] = useState("Action");
-  const [movies, setmovies] = useState(null);
+  const {movies, setMovies} = useMoviesContext();
   const [showLoader, setLoader] = useState(true);
-  console.log(category);
   const getMovies = async (category) => {
     try {
       setLoader(true);
       const response = await axios.get(`/moviescategory/${category}`);
-      setmovies(response.data.movies);
-      console.log(response.data);
+      setMovies(response.data.movies);
       setLoader(false);
     } catch (err) {
       console.log(err.message);
     }
   };
-
   useEffect(() => {
     setTimeout(() => {
       getMovies(category);

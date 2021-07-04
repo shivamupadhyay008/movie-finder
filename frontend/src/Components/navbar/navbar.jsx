@@ -1,4 +1,4 @@
-import "./navbar.css";
+import "./navbar.scss";
 import {Link} from "react-router-dom";
 export const Navbar = () => {
   return (

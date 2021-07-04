@@ -1,13 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { MovieCard ,Loader} from "../index";
+import {useMoviesContext} from "../../context/movieContext";
 export const AllMovies = ({  setData, setshow }) => {
-  const [movies, setmovies] = useState(null);
   const [size,setSize]=useState(10);
+  const {movies,setMovies} =useMoviesContext()
   const getMovies = async(size)=>{
   try {
     const response = await axios.get(`/getmoviesinfo/${size}`);
-    setmovies(response.data.movies)
+    setMovies(response.data.movies)
     setSize((size)=>size+5)
     console.log(response.data);
   } catch (err) {
@@ -18,7 +19,6 @@ export const AllMovies = ({  setData, setshow }) => {
    setTimeout(() => {
     getMovies(10);
    }, 3000);
-
   }, []);
 
   return movies ? (
@@ -31,6 +31,7 @@ export const AllMovies = ({  setData, setshow }) => {
             setData={setData}
             setshow={setshow}
             key={item.id}
+            setMovies={setMovies}
           />
         );
       })}

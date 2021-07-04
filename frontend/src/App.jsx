@@ -1,4 +1,4 @@
-import "./styles.css";
+import "./styles.scss";
 import {
   Navbar,
   Home,
@@ -23,16 +23,11 @@ export default function App() {
           />
           <Route
             path="/category"
-            element={
-              <MoviesByCategory
-                setData={setData}
-                setshow={setshow}
-              />
-            }
+            element={<MoviesByCategory setData={setData} setshow={setshow} />}
           />
         </Routes>
       </div>
       <Moviepage show={show} movieData={data} setshow={setshow} />
     </>
-  )
+  );
 }

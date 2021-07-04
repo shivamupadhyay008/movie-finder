@@ -5,3 +5,4 @@ export { AllMovies } from "./allmovies/allmovies";
 export { MoviesByCategory } from "./moviesCategory/moviesCategory";
 export { Home } from "./home/home";
 export { Loader } from "./loader/loader";
+export { UpdateMovie } from "./updateform/updateform";

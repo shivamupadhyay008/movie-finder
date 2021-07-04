@@ -1,0 +1,47 @@
+.update-cls{
+background-color: #c8b8db;
+padding: 0.5rem;
+}
+.in-div{
+    padding: 0.5rem;
+}
+.lbl-cls{
+    font-weight: bold;
+    margin: 0 0.5rem;
+    margin-bottom: 1rem;
+    width: 170px;
+    display: inline-block;
+
+}
+.text-cls{
+    width: 70%;
+    background-color: inherit;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid gray;
+}
+.text-cls:focus{
+    border-bottom: 2px solid #5f2d9c;
+}
+.txt-area{
+    display: flex;
+}
+.btn-ctr{
+    text-align: center;
+}
+.mw-sm{
+    width: 70%;
+    height: 40vh;
+}
+@media screen and (max-width:600px) {
+
+.lbl-cls{
+display: block;
+}
+.text-cls{
+    width: 90%;
+}
+.txt-area{
+    flex-direction: column;
+}
+}

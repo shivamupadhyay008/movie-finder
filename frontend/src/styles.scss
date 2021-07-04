@@ -1,11 +1,20 @@
 body {
   margin: 0;
-  background-color: #c8b8db;
+  background-color: #ded4e9;
 }
 .App {
-  padding: 0 0.5rem;
   padding-top: 6rem;
 }
+.mt-2{
+  margin-top: 20px;
+}
+.mb-2{
+margin-bottom: 20px;
+}
+.ml-2{
+  margin-left: 20px;
+}
+
 .movies-cards-div {
   display: flex;
   flex-wrap: wrap;
@@ -16,7 +25,7 @@ body {
 
 .App {
   padding: 0 ;
-  padding-top: 6rem;
+  padding-top: 4rem;
 }
     .movies-cards-div {
   flex-direction: column;
