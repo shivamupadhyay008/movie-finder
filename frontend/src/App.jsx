@@ -7,6 +7,7 @@ const MoviesByCategory = lazy(() => import("./Components/moviesCategory/moviesCa
 export default function App() {
   const [show, setshow] = useState(false);
   const [data, setData] = useState({ name: "shivam" });
+  console.log(process.env)
   return (
     <>
       <Navbar />
