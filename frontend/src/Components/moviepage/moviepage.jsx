@@ -9,7 +9,7 @@ export const Moviepage = ({ movieData, show, setshow }) => {
     <section>
       <Modal
         show={show}
-        size="lg"
+        size="md"
         style={{ height: "100vh" }}
         aria-labelledby="contained-modal-title-vcenter"
         centered
