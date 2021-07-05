@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  background-color: #ded4e9;
+}
+.App {
+  padding-top: 6rem;
+}
+.mt-2{
+  margin-top: 20px;
+}
+.mb-2{
+margin-bottom: 20px;
+}
+.ml-2{
+  margin-left: 20px;
+}
+
+.movies-cards-div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+}
+@media only screen and (max-width: 600px) {
+
+.App {
+  padding: 0 ;
+  padding-top: 4rem;
+}
+    .movies-cards-div {
+  flex-direction: column;
+  }
+}
